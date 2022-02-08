@@ -1,3 +1,3 @@
 ### How it looks!
 
-[![how it looks!](p5.js-Experiments/randomCircleNoOverlap/image.png)]
+[![how it looks!](https://raw.githubusercontent.com/victorDigital/p5.js-Experiments/main/randomCircleNoOverlap/image.png)]
