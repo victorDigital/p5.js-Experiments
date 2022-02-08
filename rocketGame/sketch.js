@@ -1,6 +1,5 @@
 
-var pos;
-var acc;
+var pos, acc;
 var myFont;
 var sideA;
 var ang = 0;
