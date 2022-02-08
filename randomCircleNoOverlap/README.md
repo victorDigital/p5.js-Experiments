@@ -1,3 +1,3 @@
 ### How it looks!
 
-[![how it looks!](\randomCircleNoOverlap\image.png)]
+[![how it looks!](p5.js-Experiments/randomCircleNoOverlap/image.png)]
