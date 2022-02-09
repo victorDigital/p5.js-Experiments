@@ -9,7 +9,7 @@ function setup() {
 }
 
 function draw() {
-  background(51);
+  background(23);
   print(obstacles);
   for(var i = 0; i < obstacles.length; i++) {
     obstacles[i].drawObstacles(i);
@@ -26,6 +26,13 @@ class obstacle {
   drawObstacles(i) {
     noFill();
     stroke(255);
+    strokeWeight(3);
     circle(obstacles[i].x, obstacles[i].y, obstacles[i].r*2 )
+  }
+}
+
+class raymarching {
+  constructor(pos,ang) {
+    this.pos = 
   }
 }
