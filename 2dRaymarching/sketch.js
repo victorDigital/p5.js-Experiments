@@ -8,6 +8,7 @@ function setup() {
 
 function draw() {
   background(51);
+  obstacles.show();
 }
 
 class obstacle {
