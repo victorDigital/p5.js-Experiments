@@ -14,4 +14,9 @@ class obstacle {
     this.y = y;
     this.r = r;
   }
+  show() {
+    for(var i = 0 ; i < obstacles.length ; i++ ) {
+      
+    }
+  }
 }
