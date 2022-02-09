@@ -8,7 +8,8 @@ function setup() {
 
 function draw() {
   background(51);
-  obstacles.show();
+  print(obstacles);
+  obstacle.drawObstacles();
 }
 
 class obstacle {
@@ -17,7 +18,7 @@ class obstacle {
     this.y = y;
     this.r = r;
   }
-  show() {
+  drawObstacles() {
     for(var i = 0 ; i < obstacles.length ; i++ ) {
       circle(obstacles[i].x, obstacles[i].y, obstacles[i].r*2 )
     }
