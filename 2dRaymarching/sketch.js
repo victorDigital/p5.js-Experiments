@@ -17,17 +17,19 @@ function draw() {
   }
   mouseVector = createVector(mouseX, mouseY);
   rayAngle = createVector(0,-1);
-  raymarchingUpdateRoot(mouseVector, rayAngle);
-  raymarchingUpdateRoot(originRoots, rayAngle);
+  raymarchingUpdate(mouseVector, rayAngle);
+  for(var i = 0 ; i<50 || ; i++) {
+    raymarchingUpdate(originRoots, rayAngle);
+  }
   
 }
 
-function raymarchingUpdateRoot(pos, ang) {
+function raymarchingUpdate(pos, ang) {
   noFill();
   stroke(255);
   strokeWeight(10);
   point(pos.x, pos.y)
-  var lowestFoundSoFar = 10000000, minimumSafeDistTemp = 0;
+  var lowestFoundSoFar = 10000000, currentAnswer = 0;
   for(var i = 0; i < obstacles.length; i++) {
     currentAnswer = dist(obstacles[i].x, obstacles[i].y, pos.x, pos.y)- obstacles[i].r;
     if(currentAnswer<lowestFoundSoFar) {
@@ -44,28 +46,16 @@ function raymarchingUpdateRoot(pos, ang) {
   originRoots = createVector((ang.x*lowestFoundSoFar)+pos.x, (ang.y*lowestFoundSoFar)+pos.y);
 }
 
-function raymarchingUpdateTree(pos, ang) {
-  noFill();
-  stroke(255);
-  strokeWeight(10);
-  point(pos.x, pos.y)
-  var lowestFoundSoFar = 10000000, minimumSafeDistTemp = 0;
+function isSmall() {
+  var lowestFoundSoFar = 10000000, currentAnswer = 0;
   for(var i = 0; i < obstacles.length; i++) {
     currentAnswer = dist(obstacles[i].x, obstacles[i].y, pos.x, pos.y)- obstacles[i].r;
     if(currentAnswer<lowestFoundSoFar) {
       lowestFoundSoFar = currentAnswer;
     }
   }
-  print(lowestFoundSoFar);
-  fill(255,10);
-  stroke(255);
-  strokeWeight(1);
-  circle(pos.x, pos.y, lowestFoundSoFar*-2);
-  strokeWeight(5);
-  point((ang.x*lowestFoundSoFar)+pos.x, (ang.y*lowestFoundSoFar)+pos.y)
-  //originRoots = (ang.x*lowestFoundSoFar)+pos.x, (ang.y*lowestFoundSoFar)+pos.y;
+  if(lowestFoundSoFar)
 }
-
 
 
 class obstacle {
