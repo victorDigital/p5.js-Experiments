@@ -1,12 +1,15 @@
 var mouseVector;
 var obstacles = [];
 var originRoots;
+var isHit = false;
 
 function setup() {
   createCanvas(600,600);
+  frameRate(144);
   for(var i = 0; i < 10; i++) {
     let o = new obstacle(random(width),random(height),random(100))
     obstacles.push(o);
+    
   }
 }
 
@@ -18,17 +21,13 @@ function draw() {
   mouseVector = createVector(mouseX, mouseY);
   rayAngle = createVector(0,-1);
   raymarchingUpdate(mouseVector, rayAngle);
-  for(var i = 0 ; i<50 || ; i++) {
+  for(var i = 0 ; i<50 || false; i++) {
     raymarchingUpdate(originRoots, rayAngle);
   }
   
 }
 
 function raymarchingUpdate(pos, ang) {
-  noFill();
-  stroke(255);
-  strokeWeight(10);
-  point(pos.x, pos.y)
   var lowestFoundSoFar = 10000000, currentAnswer = 0;
   for(var i = 0; i < obstacles.length; i++) {
     currentAnswer = dist(obstacles[i].x, obstacles[i].y, pos.x, pos.y)- obstacles[i].r;
@@ -41,12 +40,10 @@ function raymarchingUpdate(pos, ang) {
   stroke(255);
   strokeWeight(1);
   circle(pos.x, pos.y, lowestFoundSoFar*-2);
-  strokeWeight(5);
-  point((ang.x*lowestFoundSoFar)+pos.x, (ang.y*lowestFoundSoFar)+pos.y)
   originRoots = createVector((ang.x*lowestFoundSoFar)+pos.x, (ang.y*lowestFoundSoFar)+pos.y);
 }
 
-function isSmall() {
+function isHit() {
   var lowestFoundSoFar = 10000000, currentAnswer = 0;
   for(var i = 0; i < obstacles.length; i++) {
     currentAnswer = dist(obstacles[i].x, obstacles[i].y, pos.x, pos.y)- obstacles[i].r;
@@ -54,7 +51,9 @@ function isSmall() {
       lowestFoundSoFar = currentAnswer;
     }
   }
-  if(lowestFoundSoFar)
+  if(lowestFoundSoFar < 1) {
+    return true;
+  }
 }
 
 
