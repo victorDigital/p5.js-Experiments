@@ -2,8 +2,10 @@ var obstacles = [];
 
 function setup() {
   createCanvas(600,600);
-  let o = new obstacle(200,300,100)
-  obstacles.push(o);
+  for(var i = 0; i < 5; i++) {
+    let o = new obstacle(random(width),random(height),random(100))
+    obstacles.push(o);
+  }
 }
 
 function draw() {
