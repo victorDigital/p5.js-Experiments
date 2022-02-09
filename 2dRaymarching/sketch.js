@@ -9,8 +9,11 @@ function setup() {
 function draw() {
   background(51);
   print(obstacles);
-  obstacle.drawObstacles();
+  for(var i = 0; i < obstacles.length; i++) {
+    obstacles[i].drawObstacles();
+  }
 }
+  
 
 class obstacle {
   constructor(x, y, r) {
@@ -19,8 +22,8 @@ class obstacle {
     this.r = r;
   }
   drawObstacles() {
-    for(var i = 0 ; i < obstacles.length ; i++ ) {
-      circle(obstacles[i].x, obstacles[i].y, obstacles[i].r*2 )
-    }
+    noFill();
+    stroke(255);
+    circle(obstacles[i].x, obstacles[i].y, obstacles[i].r*2 )
   }
 }
