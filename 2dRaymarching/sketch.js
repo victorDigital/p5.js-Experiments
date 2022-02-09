@@ -2,7 +2,7 @@ var obstacles = [];
 
 function setup() {
   createCanvas(600,600);
-  let o = new obstacle(300,300,100)
+  let o = new obstacle(200,300,100)
   obstacles.push(o);
 }
 
@@ -10,7 +10,7 @@ function draw() {
   background(51);
   print(obstacles);
   for(var i = 0; i < obstacles.length; i++) {
-    obstacles[i].drawObstacles();
+    obstacles[i].drawObstacles(i);
   }
 }
   
@@ -21,7 +21,7 @@ class obstacle {
     this.y = y;
     this.r = r;
   }
-  drawObstacles() {
+  drawObstacles(i) {
     noFill();
     stroke(255);
     circle(obstacles[i].x, obstacles[i].y, obstacles[i].r*2 )
