@@ -12,7 +12,7 @@ function setup() {
   ang = createVector();
   frameRate(144);
   for(var i = 0; i < 10; i++) {
-    let o = new obstacle(random(width),random(height),random(100))
+    let o = new obstacle(random(width),random(height),random(400))
     obstacles.push(o);
     
   }
