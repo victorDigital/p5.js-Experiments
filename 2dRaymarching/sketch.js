@@ -8,7 +8,7 @@ var ang;
 var test;
 
 function setup() {
-  createCanvas(600,600);
+  createCanvas(windowWidth-100,windowHeight-100);
   ang = createVector();
   frameRate(144);
   for(var i = 0; i < 10; i++) {
@@ -16,13 +16,21 @@ function setup() {
     obstacles.push(o);
     
   }
+  let o = new obstacle(windowWidth/2,-1000000,1000000)
+  obstacles.push(o);
+  o = new obstacle(windowWidth/2,1000000,1000000-windowHeight)
+  obstacles.push(o);
+  o = new obstacle(-1000000,windowHeight/2,1000000)
+  obstacles.push(o);
+  o = new obstacle(1000000,windowHeight/2,1000000-windowWidth)
+  obstacles.push(o);
+
   createP("use mouse to change origin")
-  createP("use arrow keys to change angle of ray")
 }
 
 function draw() {
   points = [];
-  background(23);
+  background(-10,100);
   for(var j = 0; j < 360 ; j+=1.5) {
     angleMode(DEGREES); 
     angleUpdate();
