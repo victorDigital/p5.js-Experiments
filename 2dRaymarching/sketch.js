@@ -4,6 +4,7 @@ var originRoot;
 var isHit = false;
 var a = 0;
 var ang;
+var test;
 
 function setup() {
   createCanvas(600,600);
