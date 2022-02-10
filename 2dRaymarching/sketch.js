@@ -1,6 +1,7 @@
 var mouseVector;
 var obstacles = [];
 var originRoot;
+var points = [];
 var isHit = false;
 var a = 0;
 var ang;
@@ -20,25 +21,40 @@ function setup() {
 }
 
 function draw() {
+  points = [];
   background(23);
-  angleUpdate();
-  for(var i = 0; i < obstacles.length; i++) {
-    obstacles[i].drawObstacles(i);
+  for(var j = 0; j < 360 ; j+=1.5) {
+    angleMode(DEGREES); 
+    angleUpdate();
+    for(var i = 0; i < obstacles.length; i++) {
+      obstacles[i].drawObstacles(i);
+    }
+    mouseVector = createVector(mouseX, mouseY);
+    rayAngle = createVector(0,-1);
+    raymarchingUpdate(mouseVector, rayAngle);
+    for(var i = 0 ; i<40 || isHit && i<40; i++) {
+      raymarchingUpdate(originRoot, rayAngle);
+    }
+    if(isHit) {
+      points.push(originRoot)
+      stroke(0,255,0)
+      strokeWeight(4)
+      point(originRoot)
+      strokeWeight(3)
+    }
   }
-  mouseVector = createVector(mouseX, mouseY);
-  rayAngle = createVector(0,-1);
-  raymarchingUpdate(mouseVector, rayAngle);
-  for(var i = 0 ; i<50 || isHit && i<50; i++) {
-    raymarchingUpdate(originRoot, rayAngle);
+  print(points.length)
+  for(var i = 0 ; i < points.length-1; i++) {
+    stroke(255)
+    var distance = dist(points[i].x,points[i].y,points[i+1].x,points[i+1].y)
+    strokeWeight(5);
+    stroke(0,255,0);
+    if(distance > 40) {
+      strokeWeight(1);
+      stroke(255,0,0);
+    }
+    line(points[i].x,points[i].y,points[i+1].x,points[i+1].y)
   }
-  if(isHit) {
-    stroke(0,255,0)
-    strokeWeight(15)
-    point(originRoot)
-    strokeWeight(3)
-    line(mouseVector.x,mouseVector.y,originRoot.x,originRoot.y)
-  }
-  
 }
 
 function raymarchingUpdate(pos) {
@@ -55,7 +71,7 @@ function raymarchingUpdate(pos) {
   fill(255,10);
   stroke(255, 200);
   strokeWeight(1);
-  circle(pos.x, pos.y, lowestFoundSoFar*-2);
+  //circle(pos.x, pos.y, lowestFoundSoFar*-2);
   originRoot = createVector((ang.x*lowestFoundSoFar)+pos.x, (ang.y*lowestFoundSoFar)+pos.y);
   isHit=false;
   if(lowestFoundSoFar < 10) {
@@ -63,13 +79,7 @@ function raymarchingUpdate(pos) {
   }
 }
 function angleUpdate() {
-  if(keyIsDown(LEFT_ARROW)) {
-    a-=1/100;
-  } 
-  
-  if(keyIsDown(RIGHT_ARROW)) {
-    a+=1/100;
-  }
+  a+=1.5;
   ang.x = cos(a);
   ang.y = sin(a);
 }
@@ -84,6 +94,6 @@ class obstacle {
     noFill();
     stroke(255);
     strokeWeight(3);
-    circle(obstacles[i].x, obstacles[i].y, obstacles[i].r*2 )
+    //circle(obstacles[i].x, obstacles[i].y, obstacles[i].r*2 )
   }
 }
