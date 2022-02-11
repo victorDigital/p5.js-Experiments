@@ -1,5 +1,3 @@
 ### How it looks!
 
-#### try it [here!](https://victordigital.github.io/2dRaymarching/)
-
-[![how it looks!](https://github.com/victorDigital/p5.js-Experiments/blob/main/2dRaymarching/image.png?raw=true)]
+#### try it (main channel tho) [here!](https://victordigital.github.io/2dRaymarching/)
