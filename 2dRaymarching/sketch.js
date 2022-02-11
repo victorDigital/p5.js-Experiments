@@ -79,7 +79,6 @@ function raymarchingUpdate(pos) {
   fill(255,10);
   stroke(255, 200);
   strokeWeight(1);
-  //circle(pos.x, pos.y, lowestFoundSoFar*-2);
   originRoot = createVector((ang.x*lowestFoundSoFar)+pos.x, (ang.y*lowestFoundSoFar)+pos.y);
   isHit=false;
   if(lowestFoundSoFar < 10) {
@@ -102,6 +101,5 @@ class obstacle {
     noFill();
     stroke(255);
     strokeWeight(3);
-    //circle(obstacles[i].x, obstacles[i].y, obstacles[i].r*2 )
   }
 }
