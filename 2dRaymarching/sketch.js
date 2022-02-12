@@ -11,6 +11,7 @@ let fov = 90;
 let amountOfScanLines;
 let scanLinesSize;
 function setup() {
+  mouseVector = createVector(10,10);
   amountOfScanLines = fov
   scanLinesSize = amountOfScanLines / fov;
   print(scanLinesSize)
@@ -37,20 +38,17 @@ function setup() {
 function draw() {
   points = [];
   background(-10);
-  for(var j = -fov / 2; j < fov/2 ; j+=0.3) {
+  for(var j = fov/2; j < fov+fov/2 ; j+=0.3) {
+    updatePos();
     angleMode(DEGREES); 
-    angleUpdate(j);
-    for(var i = 0; i < obstacles.length; i++) {
-    }
-    mouseVector = createVector(mouseX, mouseY);
+    angleUpdate(j,fov);
+    //mouseVector = createVector(mouseX, mouseY);
     rayAngle = createVector(0,-1);
     raymarchingUpdate(mouseVector, rayAngle);
     for(var i = 0 ; i<40 || isHit && i<40; i++) {
       raymarchingUpdate(originRoot, rayAngle);
     }
-    if(isHit) {
-      points.push(originRoot)
-    }
+    points.push(originRoot)
   }
   for(let i = 0; i < points.length; i++) {
     let curBar = points[i];
@@ -92,8 +90,17 @@ function angleUpdate(p) {
     aMove+=1/300;
   }
   a += aMove;
-  ang.x = cos(a);
-  ang.y = sin(a);
+  ang.set(cos(a),sin(a));
+}
+
+function updatePos() {
+  if(keyIsDown(UP_ARROW)) {
+    mouseVector.add(ang.x/50,ang.y/50)
+    print(cos(a),a)
+  } 
+  if(keyIsDown(DOWN_ARROW)) {
+    
+  } 
 }
 
 class obstacle {
