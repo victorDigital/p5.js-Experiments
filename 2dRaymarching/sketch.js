@@ -83,11 +83,11 @@ function angleUpdate(p) {
   a=p;
 
   if(keyIsDown(LEFT_ARROW)) {
-    aMove-=1/300;
+    aMove-=1/100;
   } 
   
   if(keyIsDown(RIGHT_ARROW)) {
-    aMove+=1/300;
+    aMove+=1/100;
   }
   a += aMove;
   ang.set(cos(a),sin(a));
@@ -95,11 +95,12 @@ function angleUpdate(p) {
 
 function updatePos() {
   if(keyIsDown(UP_ARROW)) {
-    mouseVector.add(ang.x/50,ang.y/50)
+    mouseVector.add(ang.x/30,ang.y/30)
     print(cos(a),a)
   } 
   if(keyIsDown(DOWN_ARROW)) {
-    
+    mouseVector.sub(ang.x/30,ang.y/30)
+    print(cos(a),a)
   } 
 }
 
