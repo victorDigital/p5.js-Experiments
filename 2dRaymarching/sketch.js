@@ -7,13 +7,17 @@ var a = 0;
 var ang;
 var test;
 let fov = 90;
+let amountOfScanLines;
 
 function setup() {
+  amountOfScanLines = fov
+  
+  print(amountOfScanLines)
   createCanvas(windowWidth-100,windowHeight-100);
   ang = createVector();
   frameRate(144);
   for(var i = 0; i < 10; i++) {
-    let o = new obstacle(random(width),random(height),random(400))
+    let o = new obstacle(random(width),random(height),random(100))
     obstacles.push(o);
     
   }
@@ -26,7 +30,7 @@ function setup() {
   o = new obstacle(1000000,windowHeight/2,1000000-windowWidth)
   obstacles.push(o);
 
-  createP("use mouse to change origin")
+  createP("use keyboard to move")
 }
 
 function draw() {
@@ -36,7 +40,6 @@ function draw() {
     angleMode(DEGREES); 
     angleUpdate(j);
     for(var i = 0; i < obstacles.length; i++) {
-      obstacles[i].drawObstacles(i);
     }
     mouseVector = createVector(mouseX, mouseY);
     rayAngle = createVector(0,-1);
@@ -46,23 +49,15 @@ function draw() {
     }
     if(isHit) {
       points.push(originRoot)
-      stroke(0,255,0)
-      strokeWeight(4)
-      point(originRoot)
-      strokeWeight(3)
     }
   }
-  print(points.length)
-  for(var i = 0 ; i < points.length-1; i++) {
-    stroke(255)
-    var distance = dist(points[i].x,points[i].y,points[i+1].x,points[i+1].y)
-    strokeWeight(5);
-    stroke(0,255,0);
-    if(distance > 40) {
-      strokeWeight(1);
-      stroke(255,0,0);
-    }
-    line(points[i].x,points[i].y,points[i+1].x,points[i+1].y)
+  for(let i = 0; i < points.length; i++) {
+    let curBar = points[i];
+    print(points.length)
+    stroke(map(dist(mouseVector.x,mouseVector.y, curBar.x,curBar.y),0,2500,255,0))
+    strokeWeight(4)
+    point(curBar.x,curBar.y)
+    strokeWeight(3)
   }
 }
 
@@ -97,10 +92,5 @@ class obstacle {
     this.x = x;
     this.y = y;
     this.r = r;
-  }
-  drawObstacles(i) {
-    noFill();
-    stroke(255);
-    strokeWeight(3);
   }
 }
