@@ -6,6 +6,7 @@ var isHit = false;
 var a = 0;
 var ang;
 var test;
+let fov = 90;
 
 function setup() {
   createCanvas(windowWidth-100,windowHeight-100);
@@ -31,9 +32,9 @@ function setup() {
 function draw() {
   points = [];
   background(-10,100);
-  for(var j = 0; j < 360 ; j+=1.5) {
+  for(var j = -fov / 2; j < fov/2 ; j+=1.5) {
     angleMode(DEGREES); 
-    angleUpdate();
+    angleUpdate(j);
     for(var i = 0; i < obstacles.length; i++) {
       obstacles[i].drawObstacles(i);
     }
@@ -85,8 +86,8 @@ function raymarchingUpdate(pos) {
     isHit=true;
   }
 }
-function angleUpdate() {
-  a+=1.5;
+function angleUpdate(p) {
+  a=p;
   ang.x = cos(a);
   ang.y = sin(a);
 }
