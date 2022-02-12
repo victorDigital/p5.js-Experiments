@@ -4,15 +4,16 @@ var originRoot;
 var points = [];
 var isHit = false;
 var a = 0;
+let aMove = 0;
 var ang;
 var test;
 let fov = 90;
 let amountOfScanLines;
-
+let scanLinesSize;
 function setup() {
   amountOfScanLines = fov
-  
-  print(amountOfScanLines)
+  scanLinesSize = amountOfScanLines / fov;
+  print(scanLinesSize)
   createCanvas(windowWidth-100,windowHeight-100);
   ang = createVector();
   frameRate(144);
@@ -35,8 +36,8 @@ function setup() {
 
 function draw() {
   points = [];
-  background(-10,100);
-  for(var j = -fov / 2; j < fov/2 ; j+=1.5) {
+  background(-10);
+  for(var j = -fov / 2; j < fov/2 ; j+=0.3) {
     angleMode(DEGREES); 
     angleUpdate(j);
     for(var i = 0; i < obstacles.length; i++) {
@@ -53,11 +54,10 @@ function draw() {
   }
   for(let i = 0; i < points.length; i++) {
     let curBar = points[i];
-    print(points.length)
-    stroke(map(dist(mouseVector.x,mouseVector.y, curBar.x,curBar.y),0,2500,255,0))
+    let distToCam = map(dist(mouseVector.x,mouseVector.y, curBar.x,curBar.y),0,2500,255,0);
+    stroke(distToCam);
     strokeWeight(4)
-    point(curBar.x,curBar.y)
-    strokeWeight(3)
+    line(4*i,0+ -distToCam +255,4*i, height+distToCam -255)
   }
 }
 
@@ -83,6 +83,15 @@ function raymarchingUpdate(pos) {
 }
 function angleUpdate(p) {
   a=p;
+
+  if(keyIsDown(LEFT_ARROW)) {
+    aMove-=1/300;
+  } 
+  
+  if(keyIsDown(RIGHT_ARROW)) {
+    aMove+=1/300;
+  }
+  a += aMove;
   ang.x = cos(a);
   ang.y = sin(a);
 }
