@@ -34,6 +34,24 @@ let id14;
 let id15;
 let id16;
 
+let d0;
+let d1;
+let d2;
+let d3;
+let d4;
+let d5;
+let d6;
+let d7;
+let d8;
+let d9;
+let d10;
+let d11;
+let d12;
+let d13;
+let d14;
+let d15;
+let d16;
+
 function setup() {
     textAlign(CENTER);
     createCanvas(400,400)
@@ -215,6 +233,76 @@ function setup() {
     id16.option(str(ids[50]));
     id16.option(str(ids[51]));
 
+    d0 = createSelect();
+    d1 = createSelect();
+    d2 = createSelect();
+    d3 = createSelect();
+    d4 = createSelect();
+    d5 = createSelect();
+    d6 = createSelect();
+    d7 = createSelect();
+    d8 = createSelect();
+    d9 = createSelect();
+    d10 = createSelect();
+    d11 = createSelect();
+    d12 = createSelect();
+    d13 = createSelect();
+    d14 = createSelect();
+    d15 = createSelect();
+    d16 = createSelect();
+
+    d0.option("i live");
+    d1.option("i live");
+    d2.option("i live");
+    d3.option("i live");
+    d4.option("i live");
+    d5.option("i live");
+    d6.option("i live");
+    d7.option("i live");
+    d8.option("i live");
+    d9.option("i live");
+    d10.option("i live");
+    d11.option("i live");
+    d12.option("i live");
+    d13.option("i live");
+    d14.option("i live");
+    d15.option("i live");
+    d16.option("i live");
+    d0.option("død");
+    d1.option("død");
+    d2.option("død");
+    d3.option("død");
+    d4.option("død");
+    d5.option("død");
+    d6.option("død");
+    d7.option("død");
+    d8.option("død");
+    d9.option("død");
+    d10.option("død");
+    d11.option("død");
+    d12.option("død");
+    d13.option("død");
+    d14.option("død");
+    d15.option("død");
+    d16.option("død");
+
+    id0.position(160, 10);
+    id1.position(160, 30);
+    id2.position(160, 50);
+    id3.position(160, 70);
+    id4.position(160, 90);
+    id5.position(160, 110);
+    id6.position(160, 130);
+    id7.position(160, 150);
+    id8.position(160, 170);
+    id9.position(160, 190);
+    id10.position(160, 210);
+    id11.position(160, 230);
+    id12.position(160, 250);
+    id13.position(160, 270);
+    id14.position(160, 290);
+    id15.position(160, 310);
+    id16.position(160, 330);
 }
 
 function draw() {
