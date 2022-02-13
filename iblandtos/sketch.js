@@ -286,23 +286,23 @@ function setup() {
     d15.option("død");
     d16.option("død");
 
-    id0.position(160, 10);
-    id1.position(160, 30);
-    id2.position(160, 50);
-    id3.position(160, 70);
-    id4.position(160, 90);
-    id5.position(160, 110);
-    id6.position(160, 130);
-    id7.position(160, 150);
-    id8.position(160, 170);
-    id9.position(160, 190);
-    id10.position(160, 210);
-    id11.position(160, 230);
-    id12.position(160, 250);
-    id13.position(160, 270);
-    id14.position(160, 290);
-    id15.position(160, 310);
-    id16.position(160, 330);
+    d0.position(235, 10);
+    d1.position(235, 30);
+    d2.position(235, 50);
+    d3.position(235, 70);
+    d4.position(235, 90);
+    d5.position(235, 110);
+    d6.position(235, 130);
+    d7.position(235, 150);
+    d8.position(235, 170);
+    d9.position(235, 190);
+    d10.position(235, 210);
+    d11.position(235, 230);
+    d12.position(235, 250);
+    d13.position(235, 270);
+    d14.position(235, 290);
+    d15.position(235, 310);
+    d16.position(235, 330);
 }
 
 function draw() {
